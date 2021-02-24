@@ -9,8 +9,10 @@
     <div :class="{doimau: color}">
       {{ ten}}
     </div>
-
-    <test></test>
+  
+    <test v-bind:ten="ten">
+        <h1 slot="test1">slot</h1>
+    </test>
      <button @click="color = !color"> Đổi màu</button>
 <!-- v-for -->
 <ul id="example-2">
@@ -18,6 +20,8 @@
     {{ parentMessage }} - {{ index }} - {{ item.message }}
   </li>
 </ul>
+<!-- fiter -->
+<p>{{tien |filtersTesst}}</p>
     <!-- an hien -->
     <br><br><br>
     <div v-show="show">
@@ -35,7 +39,6 @@
       <div>{{ clickb }}</div>
     </div>
   </div>
-  
 </template>
 
 <script>
@@ -53,6 +56,7 @@ export default {
       mes: '',
       lock: true,
       color: true,
+      tien: 200000,
       show: true,
       numberA:0,
        clickb: 0,
@@ -87,7 +91,11 @@ console.log(newm);
   },
   components: {
         "test" : test,
-    }
+}, filters: {
+  filtersTesst: function(soTien){
+    return soTien.toFixed(2).replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, "$1,");
+}
+}
 }
 </script>
 

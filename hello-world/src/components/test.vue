@@ -1,12 +1,17 @@
 <template>
   <div class="hello">
-    <p>thanh cong</p>
+    <p>{{ten}}</p>
+     <slot name="test1"></slot>
+    <p>ass</p>
   </div>
 </template>
 
 <script>
 export default {
   name: 'test',
+  props: {
+    ten: String
+  }
 }
 </script>
 
